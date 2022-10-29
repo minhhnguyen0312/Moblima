@@ -1,0 +1,1 @@
+timeSlot|movieName|numFreeSeat

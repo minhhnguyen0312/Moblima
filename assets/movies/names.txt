@@ -1,0 +1,2 @@
+movieName|status|duration|totalSale|
+EndGame|nowShowing|3|2000|
