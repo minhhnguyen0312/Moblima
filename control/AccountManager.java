@@ -6,12 +6,12 @@ import entities.*;
 
 import java.io.*;
 
-public class AccountManager extends DBManager {
+public class AccountManager extends DBManager<Person> {
 
     public AccountManager(String root) throws IOException {
         this.root = root;
         // this.columns = new ArrayList<String>();
-        this.data = new ArrayList<ArrayList<String>>();
+        // this.data = new ArrayList<ArrayList<String>>();
         this.columns = new ArrayList<String>(Arrays.asList("id", "account", "password", "name", "age", "email", "phoneNumber"));
         this.read(root);
     }
@@ -29,23 +29,30 @@ public class AccountManager extends DBManager {
     }
 
     public Person getPersonFromAccount(String account) {
-        for (ArrayList<String> person : this.data){
-            if (account.equals(person.get(1))){
-                Person p = new Person(
-                    person.get(3),
-                    Integer.parseInt(person.get(4)),
-                    person.get(5),
-                    person.get(6),
-                    person.get(1),
-                    person.get(2)
-                );
-                return p;
+        for (Person person : this.data){
+            if (account.equals(person.getAccount())){
+                return person;
             }
         }
         return null;
     }
 
-    public Person getPersonFromUserId(String user_id) {
+    @Override
+    public Person constructFromArr(ArrayList<String> ele) throws NumberFormatException, IOException {
+        Person m = new Person(
+            ele.get(3),
+            Integer.parseInt(ele.get(4)),
+            ele.get(5),
+            ele.get(6),
+            ele.get(1),
+            ele.get(2)
+        );
+        return m;
+    }
+
+    @Override
+    public ArrayList<String> decodeFromObj(Person obj) {
+        // TODO Auto-generated method stub
         return null;
     }
 }
