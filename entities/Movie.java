@@ -33,6 +33,24 @@ public class Movie {
         return this.name;
     }
 
+    public Status getStatus(){
+        return showingStatus;
+    }
+
+    public Float getDuration(){
+        return duration;
+    }
+
+    public Integer getSales(){
+        return sales;
+    }
+
+    public boolean isShowing(){
+        if (showingStatus == Status.Preview || showingStatus == Status.NowShowing)
+            return true;
+        return false;
+    }
+
     public String getMovieSypnosis(String movieName) throws IOException {
         String filename = String.format("assets/movies/sypnosis/%s.txt", movieName);
         Scanner s = new Scanner(new FileInputStream(filename));

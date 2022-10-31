@@ -11,12 +11,13 @@ import entities.Person;
 public class Loger {
     private static AccountManager accountManager;
 
-    public static void main(String root, String use_case, Scanner sc) throws IOException, ParseException  {
+    public static void main(String root, String use_case) throws IOException, ParseException  {
         accountManager = new AccountManager("assets/clients.txt");
-        login(use_case, sc);
+        login(use_case);
     }
 
-    public static void login(String use_case, Scanner sc){
+    public static void login(String use_case) throws IOException, ParseException{
+        Scanner sc = new Scanner(System.in);
         String account, password;
         Person p;
         App app;

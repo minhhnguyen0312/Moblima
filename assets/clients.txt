@@ -1,2 +1,2 @@
 id|account|password|name|age|email|phoneNumber
-3;Thanh Huyen;04292002;Thanh Huyen;20;0916025226;thanhhuyen0428@gmail.com
+1;Thanh Huyen;04292002;Thanh Huyen;20;0916025226;thanhhuyen0428@gmail.com

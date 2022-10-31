@@ -1,6 +1,6 @@
 package boundaries;
-// import java.io.IOException;
-// import java.text.ParseException;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.*;
 
 import control.*;
@@ -17,12 +17,15 @@ public class MovieGoerApp extends App {
         this.ticketManager = null;
     }
 
-    public MovieGoerApp(Person user){
+    public MovieGoerApp(Person user) throws IOException{
         this.user=user;
-        // this.ticketManager = new TicketManager(user.getEmail());
+        this.ticketManager = new TicketManager(user.getEmail());
+        this.movieManager = new MoviesManager();
+        this.cinemaManager = new CinemaManager();
     }
 
-    public void runningSession() {
+    @Override
+    public void runningSession() throws IOException, ParseException {
         System.out.println("Welcome to MOBLIMA Booking Center");
         System.out.println("================================================================");
         System.out.println("1. Search for movies.");
@@ -37,7 +40,20 @@ public class MovieGoerApp extends App {
             choice = sc.nextInt();
             sc.nextLine();
             switch(choice){
-                case 1:
+                case 1: 
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    boolean booked = bookTicket();
+                    break;
+                case 5:
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                
             }
         }
         sc.close();
@@ -51,13 +67,14 @@ public class MovieGoerApp extends App {
         return null;
     }
 
-    public boolean bookTicket(){
+    public boolean bookTicket() throws IOException{
         // Write tickets information to database
         Scanner sc = new Scanner(System.in);
         System.out.println("These movies are currently showing.");
         this.movieManager.showMovies();
         System.out.println("Please choose one by enter movie Id:");
-        String movieId = sc.nextLine().trim();
+        Integer movieId = sc.nextInt();
+        sc.nextLine();
         Movie movie = this.movieManager.getMovieById(movieId);
         System.out.printf("These cinema are currently showing %s", movie.getName());
         this.cinemaManager.showCinema(movie.getName());

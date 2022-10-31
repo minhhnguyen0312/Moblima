@@ -21,10 +21,6 @@ public abstract class DBManager<T> {
         // this.columns = getColumns(this.root);
     }
 
-    // public ArrayList<String> getColumns(String filename) {
-    //     ArrayList<String> data = new ArrayList<String>();
-    //     return data;
-    // }
 
     public void read(String root) throws IOException{
         Scanner sc = new Scanner(new FileInputStream(root));

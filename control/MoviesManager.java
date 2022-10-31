@@ -3,14 +3,19 @@ package control;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import entities.Movie;
 
 public class MoviesManager extends DBManager<Movie> {
-    private ArrayList<Movie> data;
-    public MoviesManager() {
-        this.root = "assets/movies/name.txt";
+    public MoviesManager() throws IOException {
+        this.root = "assets/movies/names.txt";
+        this.data = new ArrayList<Movie>();
+        this.columns = new ArrayList<String>(Arrays.asList("id","movieName","status","duration","totalSale","director"));
+        // System.out.println("Retrieving movies...");
+        super.read(this.root);
+        
     }
 
     public String getMovieSypnosis(String movieName) throws IOException {
@@ -36,7 +41,16 @@ public class MoviesManager extends DBManager<Movie> {
     }
 
     public Movie getMovieById(Integer id){
-        return null;
+        return this.data.get(id - 1);
+    }
+
+    public void showMovies() throws IOException{
+        int count = 1;
+        for (Movie m : this.data){
+            if (m.isShowing())
+                System.out.printf("%d. %s\n", count, m.rprStringToUser());
+            count ++;
+        }
     }
 
     @Override

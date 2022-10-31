@@ -11,7 +11,7 @@ public class AccountManager extends DBManager<Person> {
     public AccountManager(String root) throws IOException {
         this.root = root;
         // this.columns = new ArrayList<String>();
-        // this.data = new ArrayList<ArrayList<String>>();
+        this.data = new ArrayList<Person>();
         this.columns = new ArrayList<String>(Arrays.asList("id", "account", "password", "name", "age", "email", "phoneNumber"));
         this.read(root);
     }
@@ -24,8 +24,8 @@ public class AccountManager extends DBManager<Person> {
         int id = this.data.size();
         String line = String.format("%d;%s;%s;%s;%d;%s;%s",
                                     id + 1, p.getAccount(), p.getPassword(),
-                                    p.getName(), p.getAge(), p.getPhoneNumber(), p.getEmail());
-        super.write(line, false);
+                                    p.getName(), p.getAge(), p.getEmail(), p.getPhoneNumber());
+        super.write(line, true);
     }
 
     public Person getPersonFromAccount(String account) {
@@ -39,6 +39,7 @@ public class AccountManager extends DBManager<Person> {
 
     @Override
     public Person constructFromArr(ArrayList<String> ele) throws NumberFormatException, IOException {
+        System.out.println("Retrieving peronal information.");
         Person m = new Person(
             ele.get(3),
             Integer.parseInt(ele.get(4)),

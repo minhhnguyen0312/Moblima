@@ -2,11 +2,20 @@ package control;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import entities.Cinema;
 
 public class CinemaManager extends DBManager<Cinema> {
     
+    public CinemaManager() throws IOException{
+        this.root = "assets/cineplexs/names.txt";
+        this.columns = new ArrayList<String>(Arrays.asList("id", "cineplexName", "cinemaName", "totalSeat"));
+        this.data = new ArrayList<Cinema>();
+
+        super.read(this.root);
+    }
+
     public void read() throws IOException {
         // A class to manage all the Cinema in all cineplex
         // As each Cinema having its own data file, we need to
@@ -19,14 +28,18 @@ public class CinemaManager extends DBManager<Cinema> {
     };
 
     public void showCinema(String movieName){
-        
+        System.out.println("Calling this method");
         return;
     }
 
     @Override
     public Cinema constructFromArr(ArrayList<String> ele) throws NumberFormatException, IOException {
-        // TODO Auto-generated method stub
-        return null;
+        Cinema c = new Cinema(
+            ele.get(0),
+            ele.get(1),
+            Integer.parseInt(ele.get(2))
+        );
+        return c;
     }
 
     @Override

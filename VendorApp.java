@@ -28,13 +28,13 @@ public class VendorApp{
             switch(sel) {
                 case 0: break;
                 case 1: 
-                    Loger.main("assets/staffs.txt", "staffapp", sc);
+                    Loger.main("assets/staffs.txt", "staffapp");
                     break;
                 case 2: 
-                    Loger.main("./assets/clients.txt", "moviegoer", sc);
+                    Loger.main("./assets/clients.txt", "moviegoer");
                     break;
                 case 3:
-                    Register.main("./assets/clients.txt", sc);
+                    Register.main("./assets/clients.txt");
                     break;
                 default:
                     System.out.println("Invalid input. Please try again.");

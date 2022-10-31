@@ -1,0 +1,4 @@
+id|cineplexName|cinemaName|totalSeat
+1;MegaTronCineplex;StandardCinema_0;50
+2;MegaTronCineplex;FirstClass_0;40
+3;MegaTronCineplex;PlatinumMovieSuite_0;20

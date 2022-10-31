@@ -44,7 +44,9 @@ class DateTime{
     }
 
     public String getDateFormatedString(){
-        return String.format("%d-%d-%d %d:%d", this.day, this.month, this.year, this.hour, this.minute);
+        return String.format("%d-%d-%d %d:%d %c",
+         this.day, this.month, this.year, this.hour, this.minute,
+         this.isHoliday? "H": "N");
     }
 
     public void setFromString(String dateString){
@@ -57,6 +59,8 @@ class DateTime{
 
         this.hour = Integer.parseInt(time[0]);
         this.minute = Integer.parseInt(time[1]);
+        if (d[2].equals("H"))
+                this.isHoliday = true;
     }
 }
 
@@ -70,8 +74,23 @@ enum AgeRating {
 }
 
 enum Status {
-    ComingSoon,
-    Preview,
-    NowShowing,
-    EndOfShowing
+    ComingSoon("ComingSoon"),
+    Preview("Preview"),
+    NowShowing("NowShowing"),
+    EndOfShowing("EndOfShowing");
+    
+    private final String status;
+    private Status(String status){
+        this.status = status;
+    }
+
+    public String toString(){
+        return status;
+    }
+}
+
+enum CinemaType{
+    Standard,
+    FirstClass,
+    Platinum,
 }
