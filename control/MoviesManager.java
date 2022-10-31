@@ -36,9 +36,9 @@ public class MoviesManager extends DBManager<Movie> {
         return cast;
     }
 
-    public ReviewsManager getRevewManager(String movieName) throws IOException {
-        return new ReviewsManager(String.format("assets/movies/revew/%s.txt", movieName));
-    }
+    // public ReviewsManager getRevewManager(String movieName) throws IOException {
+    //     return new ReviewsManager(String.format("assets/movies/revew/%s.txt", movieName));
+    // }
 
     public Movie getMovieById(Integer id){
         return this.data.get(id - 1);

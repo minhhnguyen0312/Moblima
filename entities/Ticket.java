@@ -19,6 +19,7 @@ public class Ticket {
     }
 
     public Float getPrice() { return price; }
+    
     public Float computePrice() {
         Float price = basePrice;
         if (ageGroup == AgeRating.M18)
@@ -26,5 +27,14 @@ public class Ticket {
         if (date.isHoliday())
             price = price * 2;
         return price;
+    }
+
+    public String getReceipt(){
+        return String.format("Movie: %s\nCinema: %s\nShowing Time: %s", movieName, cinema, date.getDateFormatedString()); //)
+    }
+
+    public String toString(){
+        // time|email|movie|cinema|ageGroup|price|paid
+        return String.format("%s;%s;%s;%s;%s", this.date.getDateFormatedString(), this.userName, this.movieName, this.cinema, this.ageGroup.toString());
     }
 }

@@ -3,7 +3,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.*;
 
-import control.ReviewsManager;
+// import control.ReviewsManager;
 
 public class Movie {
 
@@ -15,7 +15,7 @@ public class Movie {
     private String sypnosis;
     private String director;
     private ArrayList<String> casts;
-    private ReviewsManager reviews;
+    private ArrayList<Review> reviews;
 
     public Movie(){}
     public Movie(String name, String showStatus, Float duration, Integer sales, String director) throws IOException{
@@ -26,7 +26,7 @@ public class Movie {
         this.director = director;
         this.sypnosis = getMovieSypnosis(name);
         this.casts = getMovieCasts(name);
-        this.reviews = getRevewManager(name);
+        // this.reviews = getRevewManager(name);
     }
 
     public String getName(){
@@ -69,8 +69,22 @@ public class Movie {
         return cast;
     }
 
-    public ReviewsManager getRevewManager(String movieName) throws IOException {
-        return new ReviewsManager(String.format("assets/movies/revew/%s.txt", movieName));
+    public ArrayList<Review> getRevewManager(String movieName) throws IOException {
+        String filename = String.format("assets/movies/review/%s.txt", movieName);
+        Scanner sc = new Scanner(new FileInputStream(filename));
+        sc.nextLine();
+        String nextLine;
+        ArrayList<String> newEle = new ArrayList<String>();
+        while (sc.hasNext()) {
+            nextLine = sc.nextLine();
+            for (String e: nextLine.trim().split(";", 10)){
+                newEle.add(e);
+            }
+            // Review r = new Review(newEle.get(0), newEle.get(1), newEle.get(2), )
+            // this.reviews.add(newEle);
+        }
+        sc.close();
+        return null;
     }
 
     public String rprStringToUser() throws IOException{
@@ -79,6 +93,6 @@ public class Movie {
     }
 
     public Float getRating() throws IOException{
-        return this.reviews.getRating();
+        return (float) 0.0;
     }
 }

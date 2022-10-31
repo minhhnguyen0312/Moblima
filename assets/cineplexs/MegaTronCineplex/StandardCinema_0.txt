@@ -1,0 +1,3 @@
+scheduleId|time|movie|totalSeat
+3;15-11-2022 15:30 H;EndGame;50
+4;15-11-2022 17:30 H;smt;50

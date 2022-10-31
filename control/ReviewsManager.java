@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import entities.Reviews;
+import entities.Review;
 
-public class ReviewsManager extends DBManager<Reviews> {
+public class ReviewsManager extends DBManager<Review> {
     public ReviewsManager(){
         this.root = "";
         this.columns = new ArrayList<String>(
@@ -32,13 +32,13 @@ public class ReviewsManager extends DBManager<Reviews> {
     }
 
     @Override
-    public Reviews constructFromArr(ArrayList<String> ele) throws NumberFormatException, IOException {
+    public Review constructFromArr(ArrayList<String> ele) throws NumberFormatException, IOException {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public ArrayList<String> decodeFromObj(Reviews obj) {
+    public ArrayList<String> decodeFromObj(Review obj) {
         // TODO Auto-generated method stub
         return null;
     }

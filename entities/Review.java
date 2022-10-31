@@ -1,12 +1,12 @@
 package entities;
-public class Reviews {
+public class Review {
     private String userName;
     private String tittle;
     private String description;
     private Float rating;
     private String movieName;
 
-    public Reviews(String username, String tittle, String description, Float rating, String movieName) {
+    public Review(String username, String tittle, String description, Float rating, String movieName) {
         this.userName = username;
         this.tittle = tittle;
         this.description = description;

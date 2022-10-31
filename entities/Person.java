@@ -1,4 +1,6 @@
 package entities;
+
+
 public class Person {
     private String name;
     private int age;
@@ -33,6 +35,16 @@ public class Person {
 
     public int getAge(){
         return this.age;
+    }
+
+    public String getAgeGroup() {
+        if (age <= 13)
+            return "PG13";
+        else if (age <= 16)
+            return "PG16";
+        else if (age <= 18)
+            return "M18";
+        return "R21";
     }
 
     public String getEmail(){

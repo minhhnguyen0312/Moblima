@@ -18,7 +18,6 @@ public abstract class DBManager<T> {
 
     public DBManager(){
         this.root = "defaultAssets.txt";
-        // this.columns = getColumns(this.root);
     }
 
 
@@ -26,9 +25,10 @@ public abstract class DBManager<T> {
         Scanner sc = new Scanner(new FileInputStream(root));
         sc.nextLine();
         String nextLine;
-        ArrayList<String> newEle = new ArrayList<String>();
+        ArrayList<String> newEle;
         while (sc.hasNext()) {
             nextLine = sc.nextLine();
+            newEle = new ArrayList<String>();
             for (String e: nextLine.trim().split(";", 10)){
                 newEle.add(e);
             }

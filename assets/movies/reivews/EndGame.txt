@@ -1,3 +1,0 @@
-id|user|title|description|rating
-1;Thanh Huyen;Bad movie;it just simply bad;4
-2;Thanh Huyen;Bad movie again;I watch second time, and it just still simply bad;4
