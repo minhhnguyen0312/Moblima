@@ -10,7 +10,7 @@ public class Movie {
     private String name;
     private Status showingStatus;
     private Float duration;
-    // private Genres movieType;
+    private AgeRating ageRating;
     private Integer sales;
     private String sypnosis;
     private String director;
@@ -26,7 +26,7 @@ public class Movie {
         this.director = director;
         this.sypnosis = getMovieSypnosis(name);
         this.casts = getMovieCasts(name);
-        // this.reviews = getRevewManager(name);
+        this.reviews = getRevewManager(name);
     }
 
     public String getName(){
@@ -90,9 +90,5 @@ public class Movie {
     public String rprStringToUser() throws IOException{
         return String.format("Movie : %s\nStatus :%s\nSYPNOSIS : %s\nDirector: %s\nCast: %s, %s,..\nRating: %f",
                              name, showingStatus, sypnosis, director, casts.get(0), casts.get(1), getRating());
-    }
-
-    public Float getRating() throws IOException{
-        return (float) 0.0;
     }
 }
