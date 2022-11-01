@@ -3,7 +3,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.*;
 
-// import control.ReviewsManager;
+import control.ReviewsManager;
 
 public class Movie {
 
