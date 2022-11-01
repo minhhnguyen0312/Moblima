@@ -15,7 +15,7 @@ public class Movie {
     private String sypnosis;
     private String director;
     private ArrayList<String> casts;
-    private ArrayList<Review> reviews;
+    private ReviewsManager reviews;
 
     public Movie(){}
     public Movie(String name, String showStatus, Float duration, Integer sales, String director) throws IOException{
