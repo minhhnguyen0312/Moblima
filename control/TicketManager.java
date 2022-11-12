@@ -23,17 +23,18 @@ public class TicketManager extends DBManager<Ticket> {
         super.read(this.root);
     }
 
-    // public void readDataFromUser() throws IOException{
-    //     if (this.email == "admin")
-    //         super.read(this.root);
-    //     else {
-    //         read();
-    //     }
-    // }
-
-    public void addTicket(String line, Boolean append) throws IOException{
-        super.write(String.format("%d;%s",totalTicketCount,line), append);
+    public void addTicket(Ticket t, Boolean append) throws IOException{
+        super.write(String.format("%d;%s",totalTicketCount, t.toString()), append);
+        this.data.add(t);
         totalTicketCount += 1;
+    }
+
+    public void showHistory() {
+        System.out.println("Showing personal booking history...");
+        for (Ticket t: this.data){
+            System.out.println(t.toString("\t"));
+        }
+        System.out.println();
     }
 
     @Override
@@ -43,7 +44,9 @@ public class TicketManager extends DBManager<Ticket> {
                             ele.get(3), 
                             ele.get(4),
                             ele.get(1), 
-                            ele.get(5));
+                            ele.get(5),
+                            ele.get(6)
+                            );
         return t;
     }
 

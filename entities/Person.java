@@ -10,8 +10,6 @@ public class Person {
     private String password;
 
     public Person(){
-        // when no information is available
-        // treat as anonimous guess
         this.name = "Anonymous";
         this.age = 6; // Set age as kid to restrict booking some movies as guess
         this.email = "";
@@ -38,13 +36,11 @@ public class Person {
     }
 
     public String getAgeGroup() {
-        if (age <= 13)
-            return "PG13";
-        else if (age <= 16)
-            return "PG16";
-        else if (age <= 18)
-            return "M18";
-        return "R21";
+        if (age <= 16)
+            return "Student";
+        else if (age <= 60)
+            return "Adult";
+        return "Senior_Citizen";
     }
 
     public String getEmail(){

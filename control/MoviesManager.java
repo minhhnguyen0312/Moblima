@@ -15,7 +15,19 @@ public class MoviesManager extends DBManager<Movie> {
         this.columns = new ArrayList<String>(Arrays.asList("id","movieName","status","duration","totalSale","director"));
         // System.out.println("Retrieving movies...");
         super.read(this.root);
-        
+    }
+
+    public void showTopMovies(String by) {
+        return;
+    }
+
+    public void showAllMovies() {
+        int i = 1;
+        System.out.println("Showing all movies...");
+        for (Movie m : this.data){
+            System.out.printf("%d. %s\n",i,  m.getName()); i++;
+        }
+        System.out.println("=============End of list=============");
     }
 
     public String getMovieSypnosis(String movieName) throws IOException {
@@ -36,9 +48,14 @@ public class MoviesManager extends DBManager<Movie> {
         return cast;
     }
 
-    // public ReviewsManager getRevewManager(String movieName) throws IOException {
-    //     return new ReviewsManager(String.format("assets/movies/revew/%s.txt", movieName));
-    // }
+    public Movie getMovieByName(String movieName){
+        for (Movie m : this.data){
+            if (m.getName().equals(movieName))
+                return m;
+        }
+        System.out.println("There is no such movie.");
+        return null;
+    }
 
     public Movie getMovieById(Integer id){
         return this.data.get(id - 1);
@@ -48,9 +65,15 @@ public class MoviesManager extends DBManager<Movie> {
         int count = 1;
         for (Movie m : this.data){
             if (m.isShowing())
-                System.out.printf("%d. %s\n", count, m.rprStringToUser());
+                System.out.printf("%d. %s\n", count, m.shortString());
             count ++;
         }
+    }
+
+    public void addMovie(Movie m) throws IOException{
+        this.data.add(m);
+        String line = String.format("%d;%s", this.data.size(), m.toString());
+        this.write(line, true);
     }
 
     @Override
@@ -68,6 +91,12 @@ public class MoviesManager extends DBManager<Movie> {
     @Override
     public ArrayList<String> decodeFromObj(Movie obj) {
         // TODO Auto-generated method stub
-        return null;
+        ArrayList<String> ele = new ArrayList<String>();
+        ele.add(obj.getName());
+        ele.add(String.format("%s", obj.getStatus()));
+        ele.add(String.format("%.1f", obj.getDuration()));
+        ele.add(obj.getSales().toString());
+        ele.add(obj.getDirector());
+        return ele;
     }
 }

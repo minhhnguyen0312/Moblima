@@ -20,7 +20,6 @@ public abstract class DBManager<T> {
         this.root = "defaultAssets.txt";
     }
 
-
     public void read(String root) throws IOException{
         Scanner sc = new Scanner(new FileInputStream(root));
         sc.nextLine();
@@ -46,18 +45,28 @@ public abstract class DBManager<T> {
             bw.close();
         }
         else{
-            String overWrite = String.join("|", this.columns) + "\n" + line;
+            String overWrite = String.join("|", this.columns) + line;
             writer.write(overWrite);
         }
         writer.close();
     };
 
-    public void remove(String column, String value){
-        Integer index = getColumnsIndex(column);
+    public void remove(String column, String value, Boolean overw) throws IOException{
+        Integer index = getColumnsIndex(column) - 1;
         for (T record: this.data){
             if (decodeFromObj(record).get(index).equals(value)){
                 this.data.remove(record);
+                break;
             }
+        }
+        if (overw) {
+            String line = "";
+            // System.out.println(this.data.size());
+            for (int i = 0; i < this.data.size(); i++){
+                // System.out.println("Hello");
+                line += String.format("\n%d;%s", i+1, this.data.get(i).toString());
+            }
+            write(line, false);
         }
     }
 

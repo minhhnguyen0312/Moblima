@@ -1,10 +1,11 @@
 package entities;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.FileWriter;
+// import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
+// import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -16,6 +17,7 @@ public class Cinema {
     private Integer totalSeat;
     // private Integer nRows, nCols;
     private ArrayList<Schedule> schedules;
+    private Integer maxId;
     private Map<String, Boolean> map;
     
     public Cinema(String cineplexName, String cinemaName, Integer totalSeat) throws IOException{
@@ -25,6 +27,7 @@ public class Cinema {
         this.totalSeat = totalSeat;
         this.map = new HashMap<String, Boolean>();
         this.schedules = new ArrayList<Schedule>();
+        this.maxId = 0;
         retrieveSchedule(cineplexName, cinemaName);
     }
 
@@ -37,14 +40,16 @@ public class Cinema {
             ele = new ArrayList<String>();
             for (String s: sc.nextLine().trim().split(";"))
                 ele.add(s);
-
+            
             Schedule sch = new Schedule(
                 Integer.parseInt(ele.get(0)),
                 ele.get(2),
                 this.cinemaName,
                 this.cineplexName,
-                ele.get(1)
+                ele.get(1),
+                ele.get(3)
             );
+            maxId = (maxId > sch.getId()) ? maxId : sch.getId();
             this.schedules.add(sch);
             // System.out.println(ele);
             this.map.put(sch.getMovieName(), true);
@@ -65,6 +70,33 @@ public class Cinema {
 
     public Integer getTotalSeat(){
         return totalSeat;
+    }
+
+    public Integer getNextSchId(){
+        return maxId + 1;
+    }
+
+    public void addSchedule(Schedule sch) throws IOException{
+        this.schedules.add(sch);
+        this.map.put(sch.getMovieName(), true);
+        String filename = "assets/cineplexs/" + cineplexName + "/" + cinemaName + ".txt";
+        FileWriter f = new FileWriter(filename, true);
+        f.write(String.format("\n%d;%s;%s;%s", sch.getId(), sch.getDateTime(), sch.getMovieName(), sch.getMovieType()));
+        f.close();
+    }
+
+    public void removeSchedule(Schedule sch, Boolean delete) throws IOException{
+        this.schedules.remove(sch);
+        String filename = "assets/cineplexs/" + cineplexName + "/" + cinemaName + ".txt";
+        FileWriter f = new FileWriter(filename);
+        String line = "";
+        for (Schedule schedule: this.schedules){
+            line = line + String.format("\n%d;%s;%s;%s", schedule.getId(), schedule.getDateTime(), schedule.getMovieName(), schedule.getMovieType());
+        }
+        f.write("scheduleId|time|movie|movieType" + line);
+        f.close();
+        if (delete)
+        sch.delete();
     }
 
     public void printSchedule(){
@@ -100,9 +132,5 @@ public class Cinema {
     
     public boolean isShowing(String movieName){
         return this.map.getOrDefault(movieName, false);
-    }
-
-    public void updateSchedule(Integer id){
-
     }
 }

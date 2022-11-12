@@ -1,0 +1,2 @@
+id|account|password|name|age|email|phoneNumber
+1;admin;123456;Minh;20;abc@moblima.com;123456

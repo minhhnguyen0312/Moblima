@@ -1,6 +1,3 @@
-review_id
-0
-1
-2
-3
-4
+review_id|rating|description
+0;3;The battle scence is good, but Iron-man died
+1;4;The CGI is so greate, poor She HUlk

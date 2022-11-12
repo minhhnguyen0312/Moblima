@@ -15,6 +15,27 @@ public class CinemaManager extends DBManager<Cinema> {
 
         super.read(this.root);
     }
+    
+    // Get all cinema in a cineplex
+    public ArrayList<Cinema> getCinema(String cineplexName) {
+        ArrayList<Cinema> l = new ArrayList<Cinema>();
+        for (Cinema c : this.data) {
+            if (c.getCineplex().equals(cineplexName)){
+                l.add(c);
+            }
+        }
+        return l;
+    }
+
+    public void showAllCinemas(){
+        int i = 1;
+        System.out.println("Showing all Cinema");
+        System.out.println("Id\tCineplex\tCinema");
+        for (Cinema m : this.data){
+            System.out.printf("%d\t%s\t%s\n",i, m.getCineplex(),  m.getName()); i++;
+        }
+        System.out.println("=============End of list=============");
+    }
 
     public void showCinema(String movieName){
         System.out.println("Id\tCinema Name");
@@ -28,7 +49,7 @@ public class CinemaManager extends DBManager<Cinema> {
     }
 
     public Cinema getCinemaById(Integer id){
-        return this.data.get(id);
+        return this.data.get(id - 1);
     }
 
     @Override

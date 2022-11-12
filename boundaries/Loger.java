@@ -6,23 +6,19 @@ import java.text.ParseException;
 import java.util.*;
 
 import control.AccountManager;
-import control.CinemaManager;
-import control.MoviesManager;
 import entities.Person;
 
 public class Loger {
     private static AccountManager accountManager;
 
     public static Person main(String root, String use_case) throws IOException, ParseException  {
-        accountManager = new AccountManager("assets/clients.txt");
-        // moviesManager = m;
-        // cinemaManager = c;
-        Person p = login(use_case);
+        accountManager = new AccountManager(root);
+        Scanner sc = new Scanner(System.in);
+        Person p = login(use_case, sc);
         return p;
     }
 
-    public static Person login(String use_case) throws IOException, ParseException{
-           Scanner sc = new Scanner(System.in);
+    public static Person login(String use_case, Scanner sc) throws IOException, ParseException{
             String account, password;
             Person p;
             int choice = 1;

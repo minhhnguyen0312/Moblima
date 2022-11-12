@@ -65,12 +65,10 @@ class DateTime{
 }
 
 enum AgeRating {
-    G("G"),
-    PG13("PG13"),
-    PG16("PG16"),
-    NC16("NC16"),
-    M18("M18"),
-    R21("R21");
+    Student("Student"),
+    Senior_Citizen("Senior Citizen"),
+    Adult("Adult");
+
 
     private final String p;
     private AgeRating(String p){
@@ -101,4 +99,9 @@ enum CinemaType{
     StandardCinema,
     FirstClass,
     PlatinumMovieSuite,
+}
+
+enum MovieType {
+    movie3D,
+    normal,
 }

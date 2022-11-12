@@ -7,34 +7,51 @@ import java.util.Arrays;
 import entities.Review;
 
 public class ReviewsManager extends DBManager<Review> {
+    private String movieName;
     public ReviewsManager(){
         this.root = "";
         this.columns = new ArrayList<String>(
-            Arrays.asList("id", "user", "title", "description", "rating")
+            Arrays.asList("review_id", "user", "title", "description", "rating")
         );
     }
 
-    public ReviewsManager(String root){
+    public ReviewsManager(String root, String movieName) throws IOException{
         this.root = root;
+        this.movieName = movieName;
         this.columns = new ArrayList<String>(
-            Arrays.asList("id", "user", "title", "description", "rating")
+            Arrays.asList("review_id", "user", "title", "description", "rating")
         );
-        // this.data = new ArrayList<ArrayList<String>>();
-    }
-    
-    public void read() throws IOException{
-        super.read(this.root);
+        this.data = new ArrayList<Review>();
+        super.read(root);
     }
 
     public Float getRating() throws IOException{
         // Get overall rating from 5 best rated reviews.
-        return (float) 0.0;
+        Float rate = 0.0f;
+        Integer count = 0;
+        for (Review r : this.data){
+            rate += r.getRating();
+            count += 1;
+        }
+        return rate / count;
+    }
+
+    public Review getBest(){
+        Float rate = 0.0f;
+        Review res = null;
+        for (Review r : this.data){
+            if (r.getRating() > rate){
+                res = r;
+                rate = r.getRating();
+            }
+        }
+        return res;
     }
 
     @Override
     public Review constructFromArr(ArrayList<String> ele) throws NumberFormatException, IOException {
         // TODO Auto-generated method stub
-        return null;
+        return new Review(ele.get(2), Float.parseFloat(ele.get(1)), movieName);
     }
 
     @Override
