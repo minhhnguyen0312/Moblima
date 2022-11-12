@@ -69,7 +69,7 @@ public class Movie {
         return cast;
     }
 
-    public ArrayList<Review> getRevewManager(String movieName) throws IOException {
+    public ArrayList<Review> getReviewManager(String movieName) throws IOException {
         String filename = String.format("assets/movies/review/%s.txt", movieName);
         Scanner sc = new Scanner(new FileInputStream(filename));
         sc.nextLine();
