@@ -33,7 +33,9 @@ public class ReviewsManager extends DBManager<Review> {
             rate += r.getRating();
             count += 1;
         }
-        return rate / count;
+        if (count >= 2)
+            return rate / count;
+        return 0f;
     }
 
     public Review getBest(){

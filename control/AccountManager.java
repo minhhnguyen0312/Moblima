@@ -26,6 +26,12 @@ public class AccountManager extends DBManager<Person> {
                                     id + 1, p.getAccount(), p.getPassword(),
                                     p.getName(), p.getAge(), p.getEmail(), p.getPhoneNumber());
         super.write(line, true);
+        String filename = "assets/tickets/" + p.getAccount() + ".txt";
+        File f = new File(filename);
+        f.createNewFile();
+        FileWriter w = new FileWriter(filename);
+        w.write("ticket_id|time|email|movie|cinema|ageGroup|movieType");
+        w.close();
     }
 
     public Person getPersonFromAccount(String account) {

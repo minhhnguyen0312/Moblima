@@ -36,6 +36,7 @@ public class MovieGoerApp extends App {
             System.out.println("3. Check seat availability");
             System.out.println("4. Book a tickets");
             System.out.println("5. View booking history");
+            System.out.println("6. List top 5 movies ranking.");
             System.out.println("0. Exit");
             choice = sc.nextInt();
             sc.nextLine();
@@ -55,6 +56,21 @@ public class MovieGoerApp extends App {
                 case 5:
                     ticketManager.showHistory();
                     break;
+                case 6:
+                    if (MoviesManager.allowAccess == 1)
+                        movieManager.showBestSales();
+                    else if(MoviesManager.allowAccess == 2)
+                        movieManager.showBestRating();
+                    else {
+                        System.out.println("Choose one of the options:");
+                        System.out.println("1. List by total sales");
+                        System.out.println("2. List by rating");
+                        System.out.println("Press any other key to exit.");
+                        int cc = sc.nextInt(); sc.nextLine();
+                        if (cc == 1) movieManager.showBestSales();
+                        if (cc == 2) movieManager.showBestRating();
+                    }
+                    break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
                     break;
@@ -67,22 +83,25 @@ public class MovieGoerApp extends App {
             
             System.out.println("These movies are currently showing.");
             this.movieManager.showMovies();
-            System.out.println("Please choose one by enter movie Id:");
+            System.out.println("Please choose one by enter movie Id: (-1 to cancel)");
             Integer movieId = sc.nextInt();
             sc.nextLine();
+            if (movieId == -1) return false;
             Movie movie = this.movieManager.getMovieById(movieId);
             
             System.out.printf("These cinema are currently showing %s\n", movie.getName());
             this.cinemaManager.showCinema(movie.getName());
-            System.out.println("Please choose one by enter cinema Id:");
+            System.out.println("Please choose one by enter cinema Id (-1 to cancel):");
             Integer cinemaId = sc.nextInt();
+            if (cinemaId == -1) return false;
             Cinema c = this.cinemaManager.getCinemaById(cinemaId);
             sc.nextLine();
             
             System.out.printf("Schedule for %s in %s\n", movie.getName(), c.getName());
             c.printMovieSchedule(movie.getName());
-            System.out.println("Please choose one by enter schedule id:");
+            System.out.println("Please choose one by enter schedule id (-1 to cancel):");
             Integer scheduleId = sc.nextInt();
+            if (scheduleId == -1) return false;
             sc.nextLine();
             Schedule sch = c.getScheduleById(scheduleId);
 

@@ -1,4 +1,1 @@
 ticket_id|time|email|movie|cinema|ageGroup|movieType
-0;15-11-2022 15:30 H;Thanh Huyen;EndGame;StandardCinema_0;Adult;movie3D
-0;15-11-2022 15:30 H;Thanh Huyen;EndGame;PlatinumMovieSuite_0;Adult;normal
-0;15-11-2022 15:30 H;Thanh Huyen;EndGame;StandardCinema_0;Adult;normal

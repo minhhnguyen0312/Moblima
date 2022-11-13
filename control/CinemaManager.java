@@ -39,7 +39,7 @@ public class CinemaManager extends DBManager<Cinema> {
 
     public void showCinema(String movieName){
         System.out.println("Id\tCinema Name");
-        int id = 0;
+        int id = 1;
         for (Cinema c: this.data){
             if (c.isShowing(movieName))
                 System.out.printf("%d\t%s\n", id, c.getName());

@@ -9,6 +9,7 @@ import java.util.Scanner;
 import entities.Movie;
 
 public class MoviesManager extends DBManager<Movie> {
+    public static Integer allowAccess = 3;
     public MoviesManager() throws IOException {
         this.root = "assets/movies/names.txt";
         this.data = new ArrayList<Movie>();
@@ -41,7 +42,7 @@ public class MoviesManager extends DBManager<Movie> {
 
     public void showBestSales() {
         Movie mb;
-        sortBySales();
+        ArrayList<Movie> s = sortBySales();
         System.out.println("Movie\tSales");
         for (int i = 0; i < this.data.size(); i++){
             if (i == 5) break;
@@ -53,22 +54,30 @@ public class MoviesManager extends DBManager<Movie> {
 
     public void showBestRating() {
         Movie mb;
-        sortByRating();
+        ArrayList<Movie> s = sortByRating();
         System.out.println("Movie\tRating");
         for (int i = 0; i < this.data.size(); i++){
             if (i == 5) break;
-            mb = this.data.get(i);
-            System.out.printf("%s\t%.1f\n", mb.getName(), mb.getRating());
+            mb = s.get(i);
+            if (mb.getRating() == 0)
+                System.out.printf("%s\tN/A\n", mb.getName());
+            else System.out.printf("%s\t%.1f\n", mb.getName(), mb.getRating());
         }
         System.out.println();
     }
 
-    public void sortBySales() {
-        this.data.sort((o1, o2) -> (o1.getSales() < o2.getSales()) ? o1.getSales() : o2.getSales());
+    public ArrayList<Movie> sortBySales() {
+        ArrayList<Movie> s = new ArrayList<Movie>();
+        for (Movie m : this.data) s.add(m);
+        s.sort((o1, o2) -> (o1.getSales() < o2.getSales()) ? 1 : -1);
+        return s;
     }
 
-    public void sortByRating() {
-        this.data.sort((o1, o2) -> Math.round((o1.getRating() < o2.getRating()) ? o1.getRating()*10f : o2.getRating()*10f));
+    public ArrayList<Movie> sortByRating() {
+        ArrayList<Movie> s = new ArrayList<Movie>();
+        for (Movie m : this.data) s.add(m);
+        s.sort((o1, o2) -> Math.round((o1.getRating() < o2.getRating()) ? 1 : -1));
+        return s;
     }
 
     public String getMovieSypnosis(String movieName) throws IOException {

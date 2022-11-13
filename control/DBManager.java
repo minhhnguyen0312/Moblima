@@ -6,9 +6,9 @@ import java.io.*;
 
 public abstract class DBManager<T> {
     // An abstract class to manage the database in text file format.
-    public String root;
-    public ArrayList<String> columns;
-    public ArrayList<T> data;
+    protected String root;
+    protected ArrayList<String> columns;
+    protected ArrayList<T> data;
 
     
     public DBManager(String filename) {

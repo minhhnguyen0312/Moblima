@@ -1,4 +1,11 @@
 id|movieName|status|duration|totalSale|director
-1;EndGame;NowShowing;3.0;2000;James
-2;James Bond;EndOfShowing;1.0;0;A
-3;I, Robot;NowShowing;1.0;0;Alex Proyas
+1;James Bond;EndOfShowing;1.0;0;A
+2;I, Robot;NowShowing;1.0;0;Alex Proyas
+3;Avengers;ComingSoon;1.0;0;Kevin
+4;Iron Man;ComingSoon;1.0;0;Kevin
+5;Incantation;ComingSoon;1.0;0;Me
+6;Hello world;ComingSoon;1.0;0;Coders
+7;Underworld;Preview;1.0;0;Lucifer
+8;Hi, I'm Alex;NowShowing;1.0;0;Alex
+9;Hell Hole;Preview;1.0;0;Unknownl
+10;EndGame;NowShowing;3.0;2001;James

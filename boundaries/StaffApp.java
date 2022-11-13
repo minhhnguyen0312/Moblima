@@ -148,8 +148,10 @@ public class StaffApp extends App {
     }
 
     public void addSchedule(Scanner sc) throws IOException {
+        System.out.println("The following movies are currently showing.");
         // Showing list of Movie to get movie name
         movieManager.showMovies();
+        System.out.println("Please choose a movie by enter its id.");
         Movie m = movieManager.getMovieById(sc.nextInt());
         // Showing list of Cinema to get Cinema
         cinemaManager.showAllCinemas();
@@ -228,6 +230,7 @@ public class StaffApp extends App {
     public void systemSetting(Scanner sc) {
         System.out.println("Please choose a property you want to set");
         System.out.println("1. Ticket price");
+        System.out.println("2. Allow customers access on Movie ticket sales");
         System.out.println("0. End Editing");
 
         int choice = sc.nextInt();
@@ -237,6 +240,13 @@ public class StaffApp extends App {
             System.out.println("Please enter the price (correct to 1 decimals place");
             Ticket.setBasePrice(sc.nextFloat());
             sc.nextLine();
+        }
+        if (choice == 2){
+            System.out.println("Allow customers to choose how they view top 5 movies? (1/2/3)");
+            System.out.println("1. By ticket sales");
+            System.out.println("2. By rating");
+            System.out.println("3. Both");
+            MoviesManager.allowAccess = sc.nextInt(); sc.nextLine();
         }
     }
 }

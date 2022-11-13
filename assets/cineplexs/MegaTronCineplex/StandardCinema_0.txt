@@ -1,3 +1,2 @@
 scheduleId|time|movie|movieType
-4;14-1-2023 9:30 H;EndGame;movie3D
-3;15-11-2022 15:30 H;EndGame;normal
+1;13-11-2022 15:30 N;EndGame;movie3D
