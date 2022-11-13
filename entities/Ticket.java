@@ -61,7 +61,7 @@ public class Ticket {
     }
 
     public static void setBasePrice(Float b){
-        Ticket.basePrice = basePrice;
+        Ticket.basePrice = b;
     }
 
     public String toString(String sep){

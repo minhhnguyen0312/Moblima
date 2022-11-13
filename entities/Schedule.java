@@ -113,11 +113,16 @@ public class Schedule {
             file.createNewFile();
             FileWriter w = new FileWriter(filename);
             String s = "";
+            ArrayList<Boolean> r;
+            this.seatStatus = new ArrayList<ArrayList<Boolean>>();
             this.remainSeat = 50;
             for (int i = 0; i < 10; i++) {
+                r = new ArrayList<Boolean>();
                 for (int j = 0; j < 5; j++) {
                     s += "T ";
+                    r.add(true);
                 }
+                this.seatStatus.add(r);
                 s += "\n";
             }
             w.write(s);

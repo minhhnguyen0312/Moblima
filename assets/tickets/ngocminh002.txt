@@ -1,2 +1,4 @@
 ticket_id|time|email|movie|cinema|ageGroup|movieType
-0;13-11-2022 15:30 N;Nguyen Minh;EndGame;StandardCinema_0;Adult;movie3D
+0;15-12-2022 14:0 H;Nguyen Minh;HelloWorld;PlatinumMovieSuite_0;Adult;movie3D
+0;13-12-2022 13:0 H;Nguyen Minh;Red book;StandardCinema_0;Adult;movie3D
+1;13-12-2022 13:0 H;Nguyen Minh;Red book;StandardCinema_0;Adult;movie3D

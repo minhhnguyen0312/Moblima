@@ -7,7 +7,7 @@ import control.AccountManager;
 import entities.Person;
 
 public class Register {
-    public static void main(String root)  throws IOException{
+    public static void register(String root)  throws IOException{
         AccountManager accountManager = new AccountManager(root);
         Person p = new Person("Albert", 20, "albert0312@gmail.com", "84364048", "albert0312", "123456");
         Scanner sc = new Scanner(System.in);

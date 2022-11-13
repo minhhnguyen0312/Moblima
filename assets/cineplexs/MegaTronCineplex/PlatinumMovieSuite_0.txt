@@ -1,2 +1,1 @@
 scheduleId|time|movie|movieType
-1;13-12-2022 14:0 N;Hell Hole;movie3D

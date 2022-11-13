@@ -46,7 +46,7 @@ public class MoviesManager extends DBManager<Movie> {
         System.out.println("Movie\tSales");
         for (int i = 0; i < this.data.size(); i++){
             if (i == 5) break;
-            mb = this.data.get(i);
+            mb = s.get(i);
             System.out.printf("%s\t%d\n", mb.getName(), mb.getSales());
         }
         System.out.println();

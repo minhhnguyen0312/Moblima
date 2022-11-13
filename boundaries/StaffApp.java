@@ -98,6 +98,7 @@ public class StaffApp extends App {
     }
 
     public void removeMovie(Scanner sc) throws IOException{
+        movieManager.movieListing();
         System.out.println("Please enter the movie name to remove:");
         String name = sc.nextLine().trim();
         try{

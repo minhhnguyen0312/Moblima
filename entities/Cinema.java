@@ -78,6 +78,7 @@ public class Cinema {
 
     public void addSchedule(Schedule sch) throws IOException{
         this.schedules.add(sch);
+        this.maxId += 1;
         this.map.put(sch.getMovieName(), true);
         String filename = "assets/cineplexs/" + cineplexName + "/" + cinemaName + ".txt";
         FileWriter f = new FileWriter(filename, true);

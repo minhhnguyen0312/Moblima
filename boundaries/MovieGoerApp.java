@@ -45,9 +45,9 @@ public class MovieGoerApp extends App {
                     movieManager.movieListing();
                     break;
                 case 2:
+                    // movieManager.movieListing();
                     System.out.println("What movie do you want to see in detail.");
-                    String movie = sc.nextLine().trim();
-                    System.out.println(movieManager.getMovieByName(movie).rprStringToUser());
+                    System.out.println(movieManager.getMovieByName(sc.nextLine().trim()).rprStringToUser());
                     break;
                 case 3:
                 case 4:

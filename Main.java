@@ -11,7 +11,7 @@ import entities.Person;
 import java.text.ParseException;
 import java.io.IOException;
 
-public class VendorApp{
+public class Main{
     public static void main(String args[]) throws IOException, ParseException {
         Scanner sc = new Scanner(System.in);
         int sel = -1;
@@ -48,7 +48,7 @@ public class VendorApp{
                     }
                     break;
                 case 3:
-                    Register.main("./assets/clients.txt");
+                    Register.register("./assets/clients.txt");
                     break;
                 default:
                     System.out.println("Invalid input. Please try again.");

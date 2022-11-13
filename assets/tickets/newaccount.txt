@@ -1,0 +1,2 @@
+ticket_id|time|email|movie|cinema|ageGroup|movieType
+2;13-12-2022 13:0 H;Minh;Red book;StandardCinema_0;Adult;movie3D
