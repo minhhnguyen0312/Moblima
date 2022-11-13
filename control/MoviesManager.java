@@ -21,13 +21,54 @@ public class MoviesManager extends DBManager<Movie> {
         return;
     }
 
-    public void showAllMovies() {
+    public void movieListing() {
         int i = 1;
         System.out.println("Showing all movies...");
         for (Movie m : this.data){
             System.out.printf("%d. %s\n",i,  m.getName()); i++;
         }
         System.out.println("=============End of list=============");
+    }
+    
+    public void showMovies() throws IOException{
+        int count = 1;
+        for (Movie m : this.data){
+            if (m.isShowing())
+                System.out.printf("%d. %s\n", count, m.shortString());
+            count ++;
+        }
+    }
+
+    public void showBestSales() {
+        Movie mb;
+        sortBySales();
+        System.out.println("Movie\tSales");
+        for (int i = 0; i < this.data.size(); i++){
+            if (i == 5) break;
+            mb = this.data.get(i);
+            System.out.printf("%s\t%d\n", mb.getName(), mb.getSales());
+        }
+        System.out.println();
+    }
+
+    public void showBestRating() {
+        Movie mb;
+        sortByRating();
+        System.out.println("Movie\tRating");
+        for (int i = 0; i < this.data.size(); i++){
+            if (i == 5) break;
+            mb = this.data.get(i);
+            System.out.printf("%s\t%.1f\n", mb.getName(), mb.getRating());
+        }
+        System.out.println();
+    }
+
+    public void sortBySales() {
+        this.data.sort((o1, o2) -> (o1.getSales() < o2.getSales()) ? o1.getSales() : o2.getSales());
+    }
+
+    public void sortByRating() {
+        this.data.sort((o1, o2) -> Math.round((o1.getRating() < o2.getRating()) ? o1.getRating()*10f : o2.getRating()*10f));
     }
 
     public String getMovieSypnosis(String movieName) throws IOException {
@@ -59,15 +100,6 @@ public class MoviesManager extends DBManager<Movie> {
 
     public Movie getMovieById(Integer id){
         return this.data.get(id - 1);
-    }
-
-    public void showMovies() throws IOException{
-        int count = 1;
-        for (Movie m : this.data){
-            if (m.isShowing())
-                System.out.printf("%d. %s\n", count, m.shortString());
-            count ++;
-        }
     }
 
     public void addMovie(Movie m) throws IOException{

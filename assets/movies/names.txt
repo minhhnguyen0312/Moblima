@@ -1,3 +1,4 @@
 id|movieName|status|duration|totalSale|director
 1;EndGame;NowShowing;3.0;2000;James
 2;James Bond;EndOfShowing;1.0;0;A
+3;I, Robot;NowShowing;1.0;0;Alex Proyas

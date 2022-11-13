@@ -1,3 +1,5 @@
 scheduleId|time|movie|movieType
 2;15-11-2022 15:30 H;EndGame;normal
 3;22-11-2022 15:30 N;EndGame;normal
+4;15-12-2024 3:12 N;EndGame;normal
+5;15-12-2022 13:30 N;I, Robot;movie3D

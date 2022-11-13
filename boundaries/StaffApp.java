@@ -26,6 +26,8 @@ public class StaffApp extends App {
                 System.out.println("1. Create/Update/Remove movie listing.");
                 System.out.println("2. Create/Update/Remove cinema showtimes and the movies to be shown");
                 System.out.println("3. System settings.");
+                System.out.println("4. See best sales movies");
+                System.out.println("5. See best rating movies");
                 System.out.println("0. Exit");
                 choice = sc.nextInt();
                 int c;
@@ -72,6 +74,12 @@ public class StaffApp extends App {
                     case 3:
                         systemSetting(sc);
                         break;
+                    case 4:
+                        movieManager.showBestSales();
+                        break;
+                    case 5:
+                        movieManager.showBestRating();
+                        break;
                     default:
                         System.out.println("Invalid choice. Please try again.");
                         break;
@@ -102,7 +110,7 @@ public class StaffApp extends App {
     }
 
     public void updateMovie(Scanner sc) throws IOException {
-        movieManager.showAllMovies();
+        movieManager.movieListing();
         System.out.println("Please choose one movie to update by enter its id.");
         Movie m = movieManager.getMovieById(sc.nextInt());
         sc.nextLine();

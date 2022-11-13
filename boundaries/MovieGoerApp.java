@@ -41,7 +41,7 @@ public class MovieGoerApp extends App {
             sc.nextLine();
             switch(choice){
                 case 1: 
-                    movieManager.showAllMovies();
+                    movieManager.movieListing();
                     break;
                 case 2:
                     System.out.println("What movie do you want to see in detail.");
@@ -101,6 +101,9 @@ public class MovieGoerApp extends App {
             if (sc.nextLine().trim().equals("confirm")){
                 ticketManager.addTicket(t, true);
                 sch.occupiedSeat(row, col);
+                movie.incrSales();
+                movieManager.remove("movieName", movie.getName(), true);
+                movieManager.addMovie(movie);
             }
         
         return false;

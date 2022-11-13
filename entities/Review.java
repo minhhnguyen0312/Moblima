@@ -4,6 +4,12 @@ public class Review {
     private Float rating;
     private String movieName;
 
+    public Review(String movieName){
+        this.description = "N/A";
+        this.rating = 0f;
+        this.movieName = movieName;
+    }
+
     public Review(String description, Float rating, String movieName) {
         this.description = description;
         this.rating = rating;

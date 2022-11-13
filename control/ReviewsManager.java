@@ -25,7 +25,7 @@ public class ReviewsManager extends DBManager<Review> {
         super.read(root);
     }
 
-    public Float getRating() throws IOException{
+    public Float getRating() {
         // Get overall rating from 5 best rated reviews.
         Float rate = 0.0f;
         Integer count = 0;
@@ -38,7 +38,7 @@ public class ReviewsManager extends DBManager<Review> {
 
     public Review getBest(){
         Float rate = 0.0f;
-        Review res = null;
+        Review res = new Review(movieName);
         for (Review r : this.data){
             if (r.getRating() > rate){
                 res = r;

@@ -136,7 +136,7 @@ public class Movie {
         return String.format("%s;%s;%.1f;%d;%s", name, showingStatus, duration, sales, director);
     }
 
-    public Float getRating() throws IOException{
+    public Float getRating() {
         return reviews.getRating();
     }
 
@@ -158,5 +158,9 @@ public class Movie {
         f.close();
 
         // Writing reviews (no need)
+    }
+
+    public void incrSales() throws IOException {
+        this.sales += 1;
     }
 }
